@@ -1,4 +1,4 @@
-# retospadel API's
+# SprinBoot JPA with RESTful API's
 
 This is simple SpringBoot application to connect to a Postgres database and expose simple RESTful APIs.
 
