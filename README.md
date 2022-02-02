@@ -86,7 +86,7 @@ I highly recommend to use [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 There is 2 ways to run the application. One way is with maven another from IntelliJ. Let's see both:
 
 ```
-$ mvn spring-boot:run 
+$ mvn spring-boot:run -Dspring-boot.run.jvmArguments="-DPOSTGRES_HOST=localhost -DPOSTGRES_DB_NAME=test_db -DPOSTGRES_USER=test_user -DPOSTGRES_PASSWORD=test_user_password"
 ```
 
 If you want to use IntelliJ and lunch the apps from the code, just simple open IntelliJ, then File -> Open and point to this folder `~/springboot-jpa`. Check auto-import option and this will import the project and recognise as maven project. From here expand the `src/main/java/com.example.demo` and right click on the main application `DemoApplication` and select "Run DemoApplication". This will start the Java process inside the IDE. You can also run in debug mode.
@@ -124,9 +124,19 @@ This will return HttpCode 200 if everything goes fine.
 You can use standard maven command and jib plugin. Be aware that you need to authenticate on a GCP project and passed the id like this
 
 ```
-$ mvn clean package -P GCLOUD_PROJECT=your_google_project_id
+$ mvn clean package -P GCLOUD_PROJECT=your_google_project_id jib:build
 ```
 
+This will create a docker image base on Temerium and push the image to eu.gcr.io/${GCLOUD_PROJECT}/${project.artifactId}
+
+From there you can deploy to Cloud Run or a kubernetes cluster and pass the vlaues for these properties
+
+```
+POSTGRES_HOST=localhost;
+POSTGRES_DB_NAME=test_db;
+POSTGRES_USER=test_user;
+POSTGRES_PASSWORD=test_user_password
+```
 
 **Folder structure**
 
