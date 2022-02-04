@@ -31,7 +31,7 @@ public class CountryRestController {
 
     @PutMapping(path = "/countries/{id}")
     @ResponseStatus(OK)
-    public Country addCountry(@PathVariable String id, @RequestBody Country country) {
+    public Country updateCountry(@PathVariable String id, @RequestBody Country country) {
         country.setId(fromString(id));
         return countryService.update(country);
     }
