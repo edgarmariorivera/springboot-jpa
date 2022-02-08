@@ -18,7 +18,6 @@
 
 	<properties>
 		<java.version>17</java.version>
-		<GCLOUD_PROJECT>YOUR-GCP-PROJECT-ID</GCLOUD_PROJECT>
 		<PORT>8080</PORT>
 	</properties>
 
@@ -70,13 +69,11 @@
 				<version>3.2.0</version>
 				<configuration>
 					<to>
-						<image>eu.gcr.io/${GCLOUD_PROJECT}/${project.artifactId}</image>
-						<credHelper>gcr</credHelper>
+						<image>docker.io/edgarmariorivera/${project.artifactId}</image>
 					</to>
 					<container>
 						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
 						<jvmFlags>
-							<jvmFlag>-Dspring.profiles.active=${GCLOUD_PROJECT}</jvmFlag>
 							<jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>
 							<jvmFlag>-Dspring.jmx.enabled=false</jvmFlag>
 							<jvmFlag>-Dserver.port=${PORT}</jvmFlag>
